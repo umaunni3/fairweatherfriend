@@ -28,8 +28,8 @@ def db(request):
     greetings = Greeting.objects.all()
      
     return render(request, "db.html", {"greetings": greetings})
-
-def addTemp(request):
-    # add the current temperature to the current user's db list thing!
-    
+#
+#def addTemp(request):
+#    # add the current temperature to the current user's db list thing!
+#    
     
