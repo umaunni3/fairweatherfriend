@@ -2,7 +2,7 @@ import requests
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .models import Greeting
+from .models import User
 from .user_verification import checkUser, getUser
 
 # Create your views here.
