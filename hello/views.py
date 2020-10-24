@@ -54,6 +54,8 @@ def register_weather_rating(request, pk=0):
     )
     
     weather_rating.save()
+    return render(request, "index.html", {"weather": "Cloudy", "temp":68})
+    
     
     
     
