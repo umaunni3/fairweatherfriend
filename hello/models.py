@@ -10,7 +10,7 @@ from django.contrib.postgres.fields import ArrayField
 # to actually add a new weather to the user's list or not
 class User(models.Model):
     uuid = models.IntegerField()
-    past_temps = ArrayField(models.IntegerField(), default=list)
+    past_temps = ArrayField(models.BigIntegerField(), default=list)
     
     def add_new_temp(self, new_temp):
         assert isinstance(new_temp, int); 'Please provide an integer-valued temperature'
