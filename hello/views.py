@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .models import Greeting
-from .user_verification import checkUser
+from .user_verification import checkUser, getUser
 
 # Create your views here.
 def index(request):
