@@ -27,7 +27,7 @@ def registerNewUser(response):
     return new_user
     
 def getUser(request):
-    user_uuid = int(request.COOKIES.get("uuid"))
+    user_uuid = int(request.COOKIES.get("uuid", default='0'))
     curr_user = User.objects.filter(uuid=user_uuid).first()
     return curr_user
 
