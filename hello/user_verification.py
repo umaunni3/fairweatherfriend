@@ -27,7 +27,9 @@ def registerNewUser(response):
     return new_user
     
 def getUser(request):
-    user_uuid = int(request.COOKIES.get("uuid", default='0'))
+    assert request.COOKIES.get("uuid") is not None; "current site visitor's cookie does not contain uuid field"
+    
+    user_uuid = int(request.COOKIES.get("uuid"))
     curr_user = User.objects.filter(uuid=user_uuid).first()
     return curr_user
 
