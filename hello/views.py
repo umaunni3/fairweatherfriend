@@ -18,7 +18,7 @@ def index(request):
 
 def whoami(request):
     curr_user = getUser(request)
-    return render(request, "whoami.html", {"user": user})
+    return render(request, "whoami.html", {"user": curr_user})
 
 def db(request):
 
