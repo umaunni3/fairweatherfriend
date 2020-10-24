@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from rest_framework.decorators import api_view
 
-from .models import User
+from .models import User, WeatherRating
 from .user_verification import checkUser, getUser, registerNewUser
 from .weather import get_weather
 
