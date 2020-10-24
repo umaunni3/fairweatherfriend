@@ -32,7 +32,7 @@ def index(request):
 #    return response
 
 @api_view(['PUT'])
-def register_weather_rating(request, rate_val):
+def register_weather_rating(request, pk=0):
     """ After the user rates the current weather, make a record of how they felt about the weather (in our database), so we can keep track of their preferences over time. """
     
     # get weather data for current user
@@ -50,7 +50,7 @@ def register_weather_rating(request, rate_val):
         clouds=curr_weather.clouds,
         rain=curr_weather.rain,
         snow=curr_weather.snow,
-        rating=int(rate_val),
+        rating=int(pk),
     )
     
     weather_rating.save()
