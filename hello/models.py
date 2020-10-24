@@ -11,6 +11,7 @@ from django.contrib.postgres.fields import ArrayField
 class User(models.Model):
     uuid = models.IntegerField()
     past_temps = ArrayField(models.IntegerField(), default=list)
+    city = models.TextField(default="Austin")
     
     def add_new_temp(self, new_temp):
         assert isinstance(new_temp, int); 'Please provide an integer-valued temperature'
