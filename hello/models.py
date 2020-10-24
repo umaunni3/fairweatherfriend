@@ -2,8 +2,8 @@ from django.db import models
 from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
-class Greeting(models.Model):
-    when = models.DateTimeField("date created", auto_now_add=True)
+#class Greeting(models.Model):
+#    when = models.DateTimeField("date created", auto_now_add=True)
 
 
 # todo: add last_modified field so we can see if we need

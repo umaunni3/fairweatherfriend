@@ -22,12 +22,12 @@ def whoami(request):
 
 def db(request):
 
-    greeting = Greeting()
-    greeting.save()
+    user = User(uuid=0)
+    user.save()
 
-    greetings = Greeting.objects.all()
+    users = User.objects.all()
      
-    return render(request, "db.html", {"greetings": greetings})
+    return render(request, "db.html", {"greetings": users})
 #
 #def addTemp(request):
 #    # add the current temperature to the current user's db list thing!

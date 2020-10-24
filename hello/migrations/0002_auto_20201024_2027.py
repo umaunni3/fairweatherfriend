@@ -7,7 +7,6 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('hello', '0001_initial'),
     ]
 
     operations = [
@@ -18,10 +17,5 @@ class Migration(migrations.Migration):
                 ('uuid', models.IntegerField()),
                 ('past_temps', django.contrib.postgres.fields.ArrayField(base_field=models.IntegerField(), default=list, size=None)),
             ],
-        ),
-        migrations.AlterField(
-            model_name='greeting',
-            name='when',
-            field=models.DateTimeField(auto_now_add=True, verbose_name='date created'),
         ),
     ]
