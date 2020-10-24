@@ -17,7 +17,7 @@ def registerNewUser(response):
     new_uuid = uuid.uuid1()
     # trim the UUID to half its size (64 instead of 128) so that
     # we can store it in a BigIntegerField attribute in the model
-    uuid_bytes_shortened = new_uuid.bytes[:8]
+    uuid_bytes_shortened = new_uuid.bytes[:4]
     short_uuid = int.from_bytes(uuid_bytes_shortened, "big")
     
     # set the cookie to associate that user with their UUID
