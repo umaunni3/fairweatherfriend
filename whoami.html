@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="container">
+
+
+<h2>Who is current user?</h2>
+
+    <p>Current user UUID is: {{ user.uuid }}</p>
+
+<!--
+<ul>
+
+{% for greeting in greetings %}
+    <li>{{ greeting.when }}</li>
+{% endfor %}
+
+</ul>
+-->
+
+</div>
+
+{% endblock %}
