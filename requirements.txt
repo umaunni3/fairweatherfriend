@@ -4,4 +4,3 @@ django-heroku
 requests
 uuid
 djangorestframework
-json
