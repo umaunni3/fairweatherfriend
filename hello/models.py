@@ -9,8 +9,7 @@ from django.contrib.postgres.fields import ArrayField
 # todo: add last_modified field so we can see if we need
 # to actually add a new weather to the user's list or not
 class User(models.Model):
-    uuid = models.IntegerField()
-    past_temps = ArrayField(models.IntegerField(), default=list)
+    uuid = models.BigIntegerField()
     city = models.TextField(default="Austin")
     
     def add_new_temp(self, new_temp):

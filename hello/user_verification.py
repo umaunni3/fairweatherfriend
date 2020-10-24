@@ -28,7 +28,6 @@ def registerNewUser(response):
     # create a new User object with the given UUID
     new_user = User.objects.create(
         uuid=short_uuid,
-        past_temps=list(),
     )
     
     new_user.save()
