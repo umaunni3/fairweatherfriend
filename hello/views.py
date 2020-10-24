@@ -41,7 +41,7 @@ def register_weather_rating(request, pk=0):
     
     # put this into the database, along with the user's rating
     weather_rating = WeatherRating.objects.create(
-        uuid=curr_user[uuid],
+        uuid=curr_user.uuid,
         dt=curr_weather[dt],
         temp=curr_weather[temp],
         feels_like=curr_weather[feels_like],
