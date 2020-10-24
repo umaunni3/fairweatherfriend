@@ -9,7 +9,11 @@
       <img src="{% static 'lang-logo.png'%}">
     </a>
     <h1>Fairweather Friend</h1>
-    <p>Find out the weather!</p>
+    <p>{{ weather }}</p>
+      <p>{{ temp }}</p>
+    <a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/1">click here to rate the weather as 1</a>
+      
+       <a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/0">click here to rate the weather as 0</a>
     <a type="button" class="btn btn-lg btn-default" href="https://devcenter.heroku.com/articles/getting-started-with-python"><span class="glyphicon glyphicon-flash"></span> Getting Started with Python</a>
     <a type="button" class="btn btn-lg btn-primary" href="https://github.com/umaunni3/fairweatherfriend"><span class="glyphicon glyphicon-download"></span> Source on GitHub</a>
   </div>

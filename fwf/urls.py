@@ -20,4 +20,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("db2/", hello.views.db, name="db2"),
     path("whoami/", hello.views.whoami, name="whoami"),
+    url(r'^api/register_weather_rating/(?P<pk>[0-9]+)$', hello.views.register_weather_rating),
 ]
