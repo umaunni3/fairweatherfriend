@@ -34,10 +34,9 @@ def getUser(request):
 def checkUser(request, response):
     if not request.COOKIES.get("uuid"):
         curr_user = registerNewUser(response)
-        return curr_user
     else:
         # get the user object and return it
         curr_user = getUser(request)
     return curr_user
         
-def updateUser
+#def updateUser
