@@ -9,7 +9,7 @@
       <script>
             function call_choose_profile(pk) {
                 $.ajax({
-                    url: '/options/choose_profile/'+pk+'/',
+                    url: '/options/choose_profile/'+pk,
                     type: 'PUT',
                     success: function(response) {alert("Setting your user profile...");}
                 })
