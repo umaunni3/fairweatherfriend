@@ -21,6 +21,7 @@ def index(request):
         response = render(request, "index.html", {'data':data, 'is_quote':False})
         
         curr_user = registerNewUser(response)
+        generate_dummy_data(curr_user.uuid)
         return response
     else:
         # get the current weather or a "weather sucks, here is alternate thing" response to display onscreen
@@ -33,6 +34,8 @@ def index(request):
             # we just got a quote
             data = {'quote':weather}
             response = render(request, "index.html", {'data':data, 'is_quote':True})
+        curr_user = getUser(request)
+        generate_dummy_data(curr_user.uuid)
         return response
     
 #    response = render(request, "index.html")
