@@ -32,7 +32,7 @@ def index(request):
             response = render(request, "index.html", {'data':data, 'is_quote':False})
         else:
             # we just got a quote
-            data = {'quote':weather}
+            data = {'quote':data_full}  # data_full is actually a quote
             response = render(request, "index.html", {'data':data, 'is_quote':True})
         curr_user = getUser(request)
         generate_dummy_data(curr_user.uuid)
