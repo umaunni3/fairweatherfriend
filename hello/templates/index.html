@@ -6,11 +6,14 @@
 <div class="jumbotron text-center">
   <div class="container">
     <a href="/" class="lang-logo">
-      <img src="{% static 'lang-logo.png'%}">
+<!--      <img src="{% static 'lang-logo.png'%}">-->
     </a>
-    <h1>Fairweather Friend</h1>
-    <p>{{ weather }}</p>
-      <p>{{ temp }}</p>
+    <h3>Fairweather Friend</h3>
+      
+      <h4>Today will be</h4>
+      <h2> {{ weather }}</h2>
+      <h4>The temperature is</h4>
+      <p>{{ temp }} F</p>
     <div>
         <p>How did you feel about today's weather?</p>
        <a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/2" style="font-size: 100px">&#128513;</a>
