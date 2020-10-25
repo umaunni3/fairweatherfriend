@@ -18,7 +18,7 @@ def index(request):
         # use default temp/weather thresholds for
         # determining weather quality
         data_full = get_weather("Austin")  # default city
-        data = {'weather':data['descriptor'], 'temp':data['feels_like']}
+        data = {'weather':data_full['descriptor'], 'temp':data_full['feels_like']}
         response = render(request, "index.html", {'data':data, 'is_quote':False})
         
         curr_user = registerNewUser(response)
