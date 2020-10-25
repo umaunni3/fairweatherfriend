@@ -9,7 +9,10 @@ from sklearn.model_selection import GridSearchCV
 import datetime
 import matplotlib.pyplot as plt
 
-def get_weather(city_name):
+from .models import WeatherRating, User
+from .user_verification import getUser
+
+def get_weather(city_name, return_descriptor=False):
     """
     Takes a city name, and returns a dictionary of weather and location data. 
     """
@@ -55,6 +58,10 @@ def get_weather(city_name):
             output_dict['snow'] = 0
         else:
             output_dict['snow'] = x['snow']['1h']
+            
+        if return_descriptor:
+            output_dict['descriptor'] = x['weather']['main']
+            output_dict['subdescriptor'] = x['weather']['description']
         return output_dict 
     else: 
         print(" City Not Found ") 
@@ -142,14 +149,19 @@ def get_city(userID):
     Takes userID, looks up their city from DB
     """
 #     TODO: make this work properly
-    return "Austin"
+    curr_user = User.objects.filter(uuid=userID).first()
+    return curr_user.city
 
 def get_user_preferences(userID):
     """
     Takes userID, returns a pandas df of their user preferences
     """
 #     TODO: make this work properly
-    return train_prefs
+    ratings = list(map(list, WeatherRating.objects.filter(uuid=userID)))
+    ratings_df = pd.DataFrame(ratings, columns=['uuid', 'dt', 'temp', 'feels_like', 'humidity', 'wind_speed', 'clouds', 'rain', 'snow', 'rating'])
+    ratings_df = ratings_df.drop(columns=['uuid'])
+    
+    return ratings_df
 
 def main(userID):
     user_preferences = get_user_preferences(userID)

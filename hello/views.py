@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view
 
 from .models import User, WeatherRating
 from .user_verification import checkUser, getUser, registerNewUser
-from .weather import get_weather
+from .utils import main, get_weather
 
 # Create your views here.
 def index(request):
@@ -16,15 +16,23 @@ def index(request):
     if not request.COOKIES.get("uuid"):
         # use default temp/weather thresholds for
         # determining weather quality
-        data = {'weather':'Sunny', 'temp':'78'}
+        data_full = get_weather("Austin")  # default city
+        data = {'weather':data['descriptor'], 'temp':data['feels_like']}
         response = render(request, "index.html", {'data':data, 'is_quote':False})
         
         curr_user = registerNewUser(response)
         return response
     else:
         # get the current weather or a "weather sucks, here is alternate thing" response to display onscreen
-        data = {'weather':'Cloudy', 'temp':'66'}
-        response = render(request, "index.html", {'data':data, 'is_quote':False})
+        data_full = main(int(request.COOKIES.get("uuid")))
+        if isinstance(data_full, dict):
+            # we got an actual data thing instead of a quote
+            data = {'weather':data['descriptor'], 'temp':data['feels_like']}
+            response = render(request, "index.html", {'data':data, 'is_quote':False})
+        else:
+            # we just got a quote
+            data = {'quote':weather}
+            response = render(request, "index.html", {'data':data, 'is_quote':True})
         return response
     
 #    response = render(request, "index.html")
