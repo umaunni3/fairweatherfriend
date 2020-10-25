@@ -197,7 +197,7 @@ def generate_dummy_data(uuid, num_samples=50):
             temp= temp, 
             humidity= 50 + np.random.normal(scale = 25, size = 1),
             clouds= 50 + np.random.normal(scale = 25, size = 1), 
-            wind_speed: np.random.gamma(shape = 5, size = 1),
+            wind_speed= np.random.gamma(shape = 5, size = 1),
             rain = 0 if rain < 0 else rain,
             snow = 0 if snow < 0 else snow,
             feels_like= temp + np.random.normal(scale = 2, size = 1),
