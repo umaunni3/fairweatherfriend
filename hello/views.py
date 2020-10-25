@@ -7,7 +7,7 @@ import datetime
 
 from .models import User, WeatherRating
 from .user_verification import checkUser, getUser, registerNewUser
-from .utils import main, get_weather, generate_dummy_data1, generate_dummy_data2
+from .utils import main, get_weather, generate_dummy_data1, generate_dummy_data2, k2f
 
 # Create your views here.
 def index(request):
@@ -18,7 +18,7 @@ def index(request):
         # use default temp/weather thresholds for
         # determining weather quality
         data_full = get_weather("Austin", return_descriptor=True)  # default city
-        data = {'weather':data_full['descriptor'], 'temp':data_full['feels_like']}
+        data = {'weather':data_full['descriptor'], 'temp':k2f(data_full['feels_like'])}
         response = render(request, "index.html", {'data':data, 'is_quote':False})
         
         curr_user = registerNewUser(response)
@@ -30,7 +30,7 @@ def index(request):
         data_full = main(int(request.COOKIES.get("uuid")))
         if isinstance(data_full, dict):
             # we got an actual data thing instead of a quote
-            data = {'weather':data['descriptor'], 'temp':data['feels_like']}
+            data = {'weather':data['descriptor'], 'temp':k2f(data['feels_like'])}
             response = render(request, "index.html", {'data':data, 'is_quote':False})
         else:
             # we just got a quote
@@ -74,7 +74,7 @@ def register_weather_rating(request, pk=0):
     data_full = main(int(request.COOKIES.get("uuid")))
     if isinstance(data_full, dict):
         # we got an actual data thing instead of a quote
-        data = {'weather':data['descriptor'], 'temp':data['feels_like']}
+        data = {'weather':data['descriptor'], 'temp':k2f(data['feels_like'])}
         response = render(request, "index.html", {'data':data, 'is_quote':False})
     else:
         # we just got a quote
@@ -124,7 +124,7 @@ def set_user_profile(request, pk=None):
     data_full = main(int(request.COOKIES.get("uuid")))
     if isinstance(data_full, dict):
         # we got an actual data thing instead of a quote
-        data = {'weather':data['descriptor'], 'temp':data['feels_like']}
+        data = {'weather':data['descriptor'], 'temp':k2f(data['feels_like'])}
         response = render(request, "index.html", {'data':data, 'is_quote':False})
     else:
         # we just got a quote
