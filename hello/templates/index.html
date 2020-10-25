@@ -5,6 +5,14 @@
 
 <div class="jumbotron text-center">
   <div class="container">
+      
+      <script>
+            function call_rate_weather(pk) {
+                $.put('api/register_weather_rating/'+pk+'/'
+                );
+            }
+        </script>
+
 <!--
     <a href="/" class="lang-logo">
       <img src="{% static 'lang-logo.png'%}">
@@ -28,11 +36,14 @@
     <div>
         
         <p>How did you feel about today's weather?</p>
-       <a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/2" style="font-size: 100px">&#128513;</a>
+        <button onclick="call_rate_weather(2)">&#128513;</button>
+<!--       <a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/2" style="font-size: 100px">&#128513;</a>-->
       
-        <a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/1" style="font-size: 100px">&#128528;</a>
+        <button onclick="call_rate_weather(1)">&#128528;</button>
+<!--        <a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/1" style="font-size: 100px">&#128528;</a>-->
         
-        <a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/0" style="font-size: 100px">&#128530;</a>
+        <button onclick="call_rate_weather(0)">&#128530;</button>
+<!--        <a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/0" style="font-size: 100px">&#128530;</a>-->
       </div>
     
       
