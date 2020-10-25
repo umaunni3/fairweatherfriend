@@ -87,7 +87,7 @@ def assess_weather(weather_dict, user_preferences = None):
     Returns -1 or 1, for negative or positive predicted user response to weather.
     """
     temp = weather_dict['feels_like'] # temperature in Kelvin
-    if user_preferences is None or len(user_preferences) < 50:
+    if user_preferences is None or len(user_preferences) < 5:
         if temp > 294: # 294K, 70 F 
             return 1
         else:
