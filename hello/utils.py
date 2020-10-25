@@ -60,8 +60,8 @@ def get_weather(city_name, return_descriptor=False):
             output_dict['snow'] = x['snow']['1h']
             
         if return_descriptor:
-            output_dict['descriptor'] = x['weather']['main']
-            output_dict['subdescriptor'] = x['weather']['description']
+            output_dict['descriptor'] = x['weather'][0]['main']
+            output_dict['subdescriptor'] = x['weather'][0]['description']
         return output_dict 
     else: 
         print(" City Not Found ") 
