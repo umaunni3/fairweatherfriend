@@ -5,3 +5,6 @@ requests
 uuid
 djangorestframework
 pandas
+numpy
+sklearn
+matplotlib
