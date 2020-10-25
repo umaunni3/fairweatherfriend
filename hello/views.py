@@ -22,6 +22,8 @@ def index(request):
         response = render(request, "index.html", {'data':data, 'is_quote':False})
         
         curr_user = registerNewUser(response)
+        # initialize a little bit of data for the new user
+        generate_dummy_data1(curr_user.uuid)
         return response
     else:
         # get the current weather or a "weather sucks, here is alternate thing" response to display onscreen
