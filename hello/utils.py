@@ -200,6 +200,9 @@ def generate_dummy_data1(uuid, num_samples=50):
     np.random.seed(429)
     base = datetime.datetime.today()
     for i in range(2):
+        temp = np.random.normal(loc = 293, scale = 5, size = 1)
+        rain = np.random.normal(scale = 10, size = 1)
+        snow = np.random.normal(scale = 10, size = 1)
         new_weather_rating = WeatherRating.objects.create(
             uuid= uuid,
             dt = int((base - datetime.timedelta(days=i)).timestamp()),
@@ -241,6 +244,9 @@ def generate_dummy_data2(uuid, num_samples=50):
     np.random.seed(429)
     base = datetime.datetime.today()
     for i in range(2):
+        temp = np.random.normal(loc = 293, scale = 5, size = 1)
+        rain = np.random.normal(scale = 10, size = 1)
+        snow = np.random.normal(scale = 10, size = 1)
         new_weather_rating = WeatherRating.objects.create(
             uuid= uuid,
             dt = int((base - datetime.timedelta(days=i)).timestamp()),
