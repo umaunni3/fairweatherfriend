@@ -181,7 +181,8 @@ def main(userID, return_descriptor=False):
     
     user_assessment = assess_weather(weather, user_preferences)
     if user_assessment == 1:
-        return get_weather(city, return_descriptor=return_descriptor)
+        weather2 = get_weather(city, return_descriptor=return_descriptor)
+        return weather2['temp'] = int(weather2['temp'])
     elif user_assessment == -1:
         return bad_weather_rec(weather)
     
