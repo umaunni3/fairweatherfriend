@@ -123,26 +123,33 @@ def bad_weather_rec(weather):
     output = ""
     if weather['rain'] > 0:
         output +=  np.random.choice([
-            "People using umbrellas always seem to be under the weather.\n"
+            "People using umbrellas always seem to be under the weather.\n\n"
         ])
     if weather['snow'] > 0:
         output += np.random.choice([
-            "The snowstorm arrived at a fortuitous moment. \n It was white on time.\n"
+            "The snowstorm arrived at a fortuitous moment. \nIt was white on time.\n\n"
         ])
     if weather['clouds'] > 50:
         output += np.random.choice([
-            "What did one raindrop say to the other? \n Two’s company, three’s a cloud. \n"
+            "What did one raindrop say to the other? \nTwo’s company, three’s a cloud. \n\n"
         ])
     if weather['feels_like'] < 273:
-        pass
+        output += np.random.choice([
+            "Cold winter weather is snow laughing matter!\n\n"
+        ])
+    if weather['feels_like'] > 303:
+        output += np.random.choice([
+            "I received a message from the sun, it was enlightening.\n\n"
+        ])
     if weather['humidity'] > 50: 
         output += np.random.choice([
-            "The secretary left me a message saying humidity will hit 90% today... She wrote it on a sticky note \n"
+            "The secretary left me a message saying humidity will hit 90% today... She wrote it on a sticky note \n\n"
         ])
     if weather['wind_speed'] > 30:
         output += np.random.choice([
-            "Coming up with weather puns is a breeze. \n"
+            "Coming up with weather puns is a breeze. \n\n"
         ])
+    return output
     
 def get_city(userID):
     """
