@@ -73,6 +73,8 @@ def register_weather_rating(request, pk=0):
     
     
     data_full = main(int(request.COOKIES.get("uuid")), return_descriptor=True)
+#    curr_user = getUser(request)
+#    data_full = get_weather(curr_user.city, return_descriptor=True)
     if isinstance(data_full, dict):
         # we got an actual data thing instead of a quote
         data = {'weather':data['descriptor'], 'temp':KtoF(data['feels_like'])}

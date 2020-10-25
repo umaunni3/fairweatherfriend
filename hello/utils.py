@@ -110,9 +110,9 @@ def learn_preferences(user_preferences):
         - rating
     """
     X, y = user_preferences.drop(['rating', 'dt'], axis = 1), user_preferences['rating']
-    lg = LogisticRegression(max_iter = 1000)
-    cvals = np.logspace(-4, -0.5, 30)
-    clf = GridSearchCV(lg, [{'C':cvals}], cv = 5)
+    clf = LogisticRegression(max_iter = 1000, C = 0.1)
+#    cvals = np.logspace(-4, -0.5, 30)
+#    clf = GridSearchCV(lg, [{'C':cvals}], cv = 5)
     return clf.fit(X, y)
 
 def bad_weather_rec(weather):
