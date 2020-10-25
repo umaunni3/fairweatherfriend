@@ -53,6 +53,7 @@ def register_weather_rating(request, pk=0):
     curr_user = getUser(request)
     curr_weather = get_weather(curr_user.city)
     today = int(datetime.datetime.today().timestamp())
+    rating_val = int(pk) - 1 # rescale from [0, 2] scale to [-1, 1] scale
     
     # put this into the database, along with the user's rating
     weather_rating = WeatherRating.objects.create(
@@ -65,7 +66,7 @@ def register_weather_rating(request, pk=0):
         clouds=curr_weather['clouds'],
         rain=curr_weather['rain'],
         snow=curr_weather['snow'],
-        rating=int(pk),
+        rating=rating_val,
     )
     
     weather_rating.save()
