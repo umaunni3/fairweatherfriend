@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'api/register_weather_rating/(?P<pk>[0-9]+)', hello.views.register_weather_rating),
     path("options/", hello.views.options, name="options"),
     url(r'options/choose_profile/(?P<pk>[a-z]+)', hello.views.set_user_profile),
+    path("options/clear_records/", hello.views.delete_user_records, name="clear_records"),
 ]

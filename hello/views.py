@@ -118,7 +118,7 @@ def set_user_profile(request, pk=None):
         - heat-lover
     """
     
-    curr_user = getUser(request)
+    
     if pk == "cold":
         generate_dummy_data2(curr_user.uuid)
     elif pk == "heat":
@@ -135,5 +135,11 @@ def set_user_profile(request, pk=None):
         response = render(request, "index.html", {'data':data, 'is_quote':True})
     return response
     
+    
+@api_view(['GET'])
+def delete_user_records(request):
+    curr_user = getUser(request)
+    instance = WeatherRecord.objects.get(uuid=curr_user.uuid)
+    instance.delete()
         
     

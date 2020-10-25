@@ -14,13 +14,21 @@
                     success: function(response) {alert("Setting your user profile...");}
                 })
             }
+          
+          function call_clear_records() {
+                $.ajax({
+                    url: '/options/clear_records/',
+                    type: 'GET',
+                    success: function(response) {alert("Clearing your temperature rating history...");}
+                })
+            }
         </script>
 
 <h2>Options</h2>
       
     <div><p>Use generic "cold-loving" user profile?</p> <button onclick="call_choose_profile('cold')">&#127783;</button> </div>
-    <div><p>Use generic "heat-loving" user profile?</p> <button onclick="call_choose_profile('heat')">&#127774;</button>
-
-</div>
+    <div><p>Use generic "heat-loving" user profile?</p> <button onclick="call_choose_profile('heat')">&#127774;</button></div>
+      
+      <div><p>Clear weather rating history for current user?</p> <button onclick="call_clear_records()">&#10060;</button></div>
 
 {% endblock %}
