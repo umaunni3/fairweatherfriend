@@ -244,4 +244,7 @@ def generate_dummy_data2(uuid, num_samples=50):
             rating= (rating1 if rating1 == 1 else -1) if temp < 273 else (rating2 if rating2 == 1 else -1),
         )
         new_weather_rating.save()
+
+def KtoF(T):
+    return (T - 273.15) * 9/5 + 32
     
