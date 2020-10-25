@@ -173,7 +173,7 @@ def get_user_preferences(userID):
 def main(userID, return_descriptor=False):
     user_preferences = get_user_preferences(userID)
     city = get_city(userID)   
-    weather = get_weather(city, return_descriptor=return_descriptor)
+    weather = get_weather(city)
     
 #     TODO
 #     similar_preferences = get_similar_preferences(userID, numsamples = 100)
@@ -181,7 +181,7 @@ def main(userID, return_descriptor=False):
     
     user_assessment = assess_weather(weather, user_preferences)
     if user_assessment == 1:
-        return weather
+        return get_weather(city, return_descriptor=return_descriptor)
     elif user_assessment == -1:
         return bad_weather_rec(weather)
     
