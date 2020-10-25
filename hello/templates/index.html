@@ -3,24 +3,6 @@
 
 {% block content %}
 
-<style>
-.content {
-  display: flex;
-  justify-content: space-between;
-  max-width: 400px;
-  margin: 0 auto;
-  background: #A0C5E8;
-  padding: 10px 0;
-}
-    
-    span {
-  width: 50px;
-  height: 50px;
-  background: black;
-}
-    
-</style>
-
 <div class="jumbotron text-center">
   <div class="container">
     <a href="/" class="lang-logo">
@@ -29,12 +11,12 @@
     <h1>Fairweather Friend</h1>
     <p>{{ weather }}</p>
       <p>{{ temp }}</p>
-    <div class=content>
-        <span><a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/2">&#128513;</a></span>
+    <div>
+       <a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/2">&#128513;</a>
       
-        <span><a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/1">&#128528;</a></span>
+        <a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/1">&#128528;</a>
         
-        <span><a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/0">&#128530;</a></span>
+        <a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/0">&#128530;</a>
       </div>
     
       
