@@ -35,7 +35,7 @@ class WeatherRating(models.Model):
     snow = models.IntegerField()
     rating = models.IntegerField()
     
-    # a user cannot submit multiple ratings for the same date's weather
-    class Meta:
-        unique_together = ("uuid", "dt")
+#    # a user cannot submit multiple ratings for the same date's weather
+#    class Meta:
+#        unique_together = ("uuid", "dt")
     
