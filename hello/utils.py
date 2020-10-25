@@ -186,14 +186,46 @@ def main(userID):
         return bad_weather_rec(weather)
     
     
-    
+
+# temperature cutoffs for warm-lover and cold-lover are based on weather conditions for oct 25, ATX- to show different cases in demo
     
 # dummy data generation
-def generate_dummy_data(uuid, num_samples=50):
+def generate_dummy_data1(uuid, num_samples=50):
+    """
+    A hot weather lover, so good weather = anything below 100 F
+    """
+
     np.random.seed(429)
     base = datetime.datetime.today()
-    numsamples = 100
-    for x in range(numsamples):
+    for x in range(num_samples):
+        temp = np.random.normal(loc = 293, scale = 5, size = 1)
+        rain = np.random.normal(scale = 10, size = 1)
+        snow = np.random.normal(scale = 10, size = 1)
+        rating1 = np.random.binomial(1, .95) # more likely to produce 1
+        rating2 = np.random.binomial(1, .05) # more likely to produce 0
+        new_weather_rating = WeatherRating.objects.create(
+            uuid= uuid,
+            dt = int((base - datetime.timedelta(days=x)).timestamp()),
+            temp= temp, 
+            humidity= 50 + np.random.normal(scale = 25, size = 1),
+            clouds= 50 + np.random.normal(scale = 25, size = 1), 
+            wind_speed= np.random.gamma(shape = 5, size = 1),
+            rain = 0 if rain < 0 else rain,
+            snow = 0 if snow < 0 else snow,
+            feels_like= temp + np.random.normal(scale = 2, size = 1),
+            rating = (rating1 if rating1 == 1 else -1) if temp < 310 else (rating2 if rating2 == 1 else -1),
+        )
+        new_weather_rating.save()
+
+
+# dummy data generation
+def generate_dummy_data2(uuid, num_samples=50):
+    """
+    A cold weather lover, so good weather = anything below 32 F 
+    """
+    np.random.seed(429)
+    base = datetime.datetime.today()
+    for x in range(num_samples):
         temp = np.random.normal(loc = 293, scale = 5, size = 1)
         rain = np.random.normal(scale = 10, size = 1)
         snow = np.random.normal(scale = 10, size = 1)
@@ -209,7 +241,7 @@ def generate_dummy_data(uuid, num_samples=50):
             rain = 0 if rain < 0 else rain,
             snow = 0 if snow < 0 else snow,
             feels_like= temp + np.random.normal(scale = 2, size = 1),
-            rating= (rating1 if rating1 == 1 else -1) if temp > 293 else (rating2 if rating2 == 1 else -1),
+            rating= (rating1 if rating1 == 1 else -1) if temp < 273 else (rating2 if rating2 == 1 else -1),
         )
         new_weather_rating.save()
     
