@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view
 
 from .models import User, WeatherRating
 from .user_verification import checkUser, getUser, registerNewUser
-from .utils import main, get_weather
+from .utils import main, get_weather, generate_dummy_data
 
 # Create your views here.
 def index(request):
