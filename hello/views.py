@@ -30,7 +30,7 @@ def index(request):
         data_full = main(int(request.COOKIES.get("uuid")))
         if isinstance(data_full, dict):
             # we got an actual data thing instead of a quote
-            data = {'weather':data['descriptor'], 'temp':k2f(data['feels_like'])}
+            data = {'weather':data_full['descriptor'], 'temp':k2f(data_full['feels_like'])}
             response = render(request, "index.html", {'data':data, 'is_quote':False})
         else:
             # we just got a quote
@@ -124,7 +124,7 @@ def set_user_profile(request, pk=None):
     data_full = main(int(request.COOKIES.get("uuid")))
     if isinstance(data_full, dict):
         # we got an actual data thing instead of a quote
-        data = {'weather':data['descriptor'], 'temp':k2f(data['feels_like'])}
+        data = {'weather':data_full['descriptor'], 'temp':k2f(data_full['feels_like'])}
         response = render(request, "index.html", {'data':data, 'is_quote':False})
     else:
         # we just got a quote
