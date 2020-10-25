@@ -11,7 +11,7 @@
       <script>
             function call_rate_weather(pk) {
                 $.ajax({
-                    url: 'api/register_weather_rating/'+pk+'/',
+                    url: 'api/register_weather_rating/'+pk,
                     type: 'PUT',
                     success: function(response) {alert("Thanks for giving your feedback!");}
                 })
