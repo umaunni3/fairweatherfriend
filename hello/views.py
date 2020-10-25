@@ -23,7 +23,7 @@ def index(request):
         
         curr_user = registerNewUser(response)
         # initialize a little bit of data for the new user
-        generate_dummy_data1(curr_user.uuid)
+        generate_dummy_data1(curr_user.uuid, num_samples=5)
         return response
     else:
         # get the current weather or a "weather sucks, here is alternate thing" response to display onscreen
