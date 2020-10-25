@@ -7,7 +7,7 @@ import datetime
 
 from .models import User, WeatherRating
 from .user_verification import checkUser, getUser, registerNewUser
-from .utils import main, get_weather, generate_dummy_data
+from .utils import main, get_weather, generate_dummy_data1, generate_dummy_data2
 
 # Create your views here.
 def index(request):
