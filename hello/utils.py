@@ -202,7 +202,7 @@ def generate_dummy_data1(uuid, num_samples=50):
     for i in range(2):
         new_weather_rating = WeatherRating.objects.create(
             uuid= uuid,
-            dt = int((base - datetime.timedelta(days=x)).timestamp()),
+            dt = int((base - datetime.timedelta(days=i)).timestamp()),
             temp= temp, 
             humidity= 50 + np.random.normal(scale = 25, size = 1),
             clouds= 50 + np.random.normal(scale = 25, size = 1), 
@@ -243,7 +243,7 @@ def generate_dummy_data2(uuid, num_samples=50):
     for i in range(2):
         new_weather_rating = WeatherRating.objects.create(
             uuid= uuid,
-            dt = int((base - datetime.timedelta(days=x)).timestamp()),
+            dt = int((base - datetime.timedelta(days=i)).timestamp()),
             temp= temp, 
             humidity= 50 + np.random.normal(scale = 25, size = 1),
             clouds= 50 + np.random.normal(scale = 25, size = 1), 
