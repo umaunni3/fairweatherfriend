@@ -36,8 +36,5 @@ class Migration(migrations.Migration):
                 ('snow', models.IntegerField()),
                 ('rating', models.IntegerField()),
             ],
-            options={
-                'unique_together': {('uuid', 'dt')},
-            },
         ),
     ]
