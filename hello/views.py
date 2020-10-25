@@ -16,13 +16,15 @@ def index(request):
     if not request.COOKIES.get("uuid"):
         # use default temp/weather thresholds for
         # determining weather quality
-        response = render(request, "index.html", {"weather": "Cloudy", "temp":68})
+        data = {'weather':'Sunny', 'temp':'78'}
+        response = render(request, "index.html", {'data':data, 'is_quote':False})
         
         curr_user = registerNewUser(response)
         return response
     else:
         # get the current weather or a "weather sucks, here is alternate thing" response to display onscreen
-        response = render(request, "index.html", {"weather": "Cloudy", "temp":66})
+        data = {'weather':'Cloudy', 'temp':'66'}
+        response = render(request, "index.html", {'data':data, 'is_quote':False})
         return response
     
 #    response = render(request, "index.html")
