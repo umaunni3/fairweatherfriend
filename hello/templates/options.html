@@ -8,8 +8,11 @@
 
       <script>
             function call_choose_profile(pk) {
-                $.put('api/choose_profile/'+pk+'/'
-                );
+                $.ajax({
+                    url: 'api/choose_profile/'+pk+'/',
+                    type: 'PUT',
+                    success: function(response) {;}
+                })
             }
         </script>
 

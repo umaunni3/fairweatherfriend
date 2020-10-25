@@ -10,8 +10,11 @@
       
       <script>
             function call_rate_weather(pk) {
-                $.put('api/register_weather_rating/'+pk+'/'
-                );
+                $.ajax({
+                    url: 'api/register_weather_rating/'+pk+'/',
+                    type: 'PUT',
+                    success: function(response) {;}
+                })
             }
         </script>
 
