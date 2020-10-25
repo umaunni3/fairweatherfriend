@@ -193,7 +193,7 @@ def generate_dummy_data(uuid, num_samples=50):
         rating2 = np.random.binomial(1, .05)
         new_weather_rating = WeatherRating.objects.create(
             uuid= uuid,
-            dt = [base - datetime.timedelta(days=x) for x in range(numsamples)],
+            dt = base - datetime.timedelta(days=x),
             temp= temp, 
             humidity= 50 + np.random.normal(scale = 25, size = 1),
             clouds= 50 + np.random.normal(scale = 25, size = 1), 
