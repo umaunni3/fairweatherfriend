@@ -160,6 +160,7 @@ def get_user_preferences(userID):
     ratings = list(map(list, WeatherRating.objects.filter(uuid=userID).values_list('dt', 'temp', 'feels_like', 'humidity', 'wind_speed', 'clouds', 'rain', 'snow', 'rating')))
     ratings_df = pd.DataFrame(ratings, columns=['dt', 'temp', 'feels_like', 'humidity', 'wind_speed', 'clouds', 'rain', 'snow', 'rating'])
     
+    
     return ratings_df
 
 def main(userID):
@@ -193,7 +194,7 @@ def generate_dummy_data(uuid, num_samples=50):
         rating2 = np.random.binomial(1, .05)
         new_weather_rating = WeatherRating.objects.create(
             uuid= uuid,
-            dt = base - datetime.timedelta(days=x),
+            dt = int((base - datetime.timedelta(days=x)).timestamp()),
             temp= temp, 
             humidity= 50 + np.random.normal(scale = 25, size = 1),
             clouds= 50 + np.random.normal(scale = 25, size = 1), 
