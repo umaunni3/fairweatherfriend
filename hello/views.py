@@ -18,7 +18,7 @@ def index(request):
         # use default temp/weather thresholds for
         # determining weather quality
         data_full = get_weather("Austin", return_descriptor=True)  # default city
-        data = {'weather':data_full['descriptor'], 'temp':KtoF(data_full['feels_like'])}
+        data = {'weather':data_full['descriptor'], 'temp':int(KtoF(data_full['feels_like']))}
         response = render(request, "index.html", {'data':data, 'is_quote':False})
         
         curr_user = registerNewUser(response)
@@ -30,7 +30,7 @@ def index(request):
         data_full = main(int(request.COOKIES.get("uuid")), return_descriptor=True)
         if isinstance(data_full, dict):
             # we got an actual data thing instead of a quote
-            data = {'weather':data_full['descriptor'], 'temp':KtoF(data_full['feels_like'])}
+            data = {'weather':data_full['descriptor'], 'temp':int(KtoF(data_full['feels_like']))}
             response = render(request, "index.html", {'data':data, 'is_quote':False})
         else:
             # we just got a quote
@@ -77,7 +77,7 @@ def register_weather_rating(request, pk=0):
 #    data_full = get_weather(curr_user.city, return_descriptor=True)
     if isinstance(data_full, dict):
         # we got an actual data thing instead of a quote
-        data = {'weather':data['descriptor'], 'temp':KtoF(data['feels_like'])}
+        data = {'weather':data['descriptor'], 'temp':int(KtoF(data['feels_like']))}
         response = render(request, "index.html", {'data':data, 'is_quote':False})
     else:
         # we just got a quote
@@ -128,7 +128,7 @@ def set_user_profile(request, pk=None):
     data_full = main(int(request.COOKIES.get("uuid")), return_descriptor=True)
     if isinstance(data_full, dict):
         # we got an actual data thing instead of a quote
-        data = {'weather':data_full['descriptor'], 'temp':KtoF(data_full['feels_like'])}
+        data = {'weather':data_full['descriptor'], 'temp':int(KtoF(data_full['feels_like']))}
         response = render(request, "index.html", {'data':data, 'is_quote':False})
     else:
         # we just got a quote
