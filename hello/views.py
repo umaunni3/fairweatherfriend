@@ -69,7 +69,18 @@ def register_weather_rating(request, pk=0):
     )
     
     weather_rating.save()
-    return render(request, "index.html", {"weather": "Cloudy", "temp":68})
+    
+    
+    data_full = main(int(request.COOKIES.get("uuid")))
+    if isinstance(data_full, dict):
+        # we got an actual data thing instead of a quote
+        data = {'weather':data['descriptor'], 'temp':data['feels_like']}
+        response = render(request, "index.html", {'data':data, 'is_quote':False})
+    else:
+        # we just got a quote
+        data = {'quote':data_full}  # data_full is actually a quote
+        response = render(request, "index.html", {'data':data, 'is_quote':True})
+    return response
     
     
     
