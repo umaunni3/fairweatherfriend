@@ -199,7 +199,20 @@ def generate_dummy_data1(uuid, num_samples=50):
 
     np.random.seed(429)
     base = datetime.datetime.today()
-    for x in range(num_samples):
+    for i in range(2):
+        new_weather_rating = WeatherRating.objects.create(
+            uuid= uuid,
+            dt = int((base - datetime.timedelta(days=x)).timestamp()),
+            temp= temp, 
+            humidity= 50 + np.random.normal(scale = 25, size = 1),
+            clouds= 50 + np.random.normal(scale = 25, size = 1), 
+            wind_speed= np.random.gamma(shape = 5, size = 1),
+            rain = 0 if rain < 0 else rain,
+            snow = 0 if snow < 0 else snow,
+            feels_like= temp + np.random.normal(scale = 2, size = 1),
+            rating = -1 if i == 0 else 1,
+        )
+    for x in range(num_samples-2):
         temp = np.random.normal(loc = 293, scale = 5, size = 1)
         rain = np.random.normal(scale = 10, size = 1)
         snow = np.random.normal(scale = 10, size = 1)
@@ -227,7 +240,20 @@ def generate_dummy_data2(uuid, num_samples=50):
     """
     np.random.seed(429)
     base = datetime.datetime.today()
-    for x in range(num_samples):
+    for i in range(2):
+        new_weather_rating = WeatherRating.objects.create(
+            uuid= uuid,
+            dt = int((base - datetime.timedelta(days=x)).timestamp()),
+            temp= temp, 
+            humidity= 50 + np.random.normal(scale = 25, size = 1),
+            clouds= 50 + np.random.normal(scale = 25, size = 1), 
+            wind_speed= np.random.gamma(shape = 5, size = 1),
+            rain = 0 if rain < 0 else rain,
+            snow = 0 if snow < 0 else snow,
+            feels_like= temp + np.random.normal(scale = 2, size = 1),
+            rating = -1 if i == 0 else 1,
+        )
+    for x in range(num_samples-2):
         temp = np.random.normal(loc = 293, scale = 5, size = 1)
         rain = np.random.normal(scale = 10, size = 1)
         snow = np.random.normal(scale = 10, size = 1)
