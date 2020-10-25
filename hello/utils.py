@@ -170,10 +170,10 @@ def get_user_preferences(userID):
     
     return ratings_df
 
-def main(userID):
+def main(userID, return_descriptor=False):
     user_preferences = get_user_preferences(userID)
     city = get_city(userID)   
-    weather = get_weather(city)
+    weather = get_weather(city, return_descriptor=return_descriptor)
     
 #     TODO
 #     similar_preferences = get_similar_preferences(userID, numsamples = 100)

@@ -27,7 +27,7 @@ def index(request):
         return response
     else:
         # get the current weather or a "weather sucks, here is alternate thing" response to display onscreen
-        data_full = main(int(request.COOKIES.get("uuid")))
+        data_full = main(int(request.COOKIES.get("uuid")), return_descriptor=True)
         if isinstance(data_full, dict):
             # we got an actual data thing instead of a quote
             data = {'weather':data_full['descriptor'], 'temp':KtoF(data_full['feels_like'])}
@@ -71,7 +71,7 @@ def register_weather_rating(request, pk=0):
     weather_rating.save()
     
     
-    data_full = main(int(request.COOKIES.get("uuid")))
+    data_full = main(int(request.COOKIES.get("uuid")), return_descriptor=True)
     if isinstance(data_full, dict):
         # we got an actual data thing instead of a quote
         data = {'weather':data['descriptor'], 'temp':KtoF(data['feels_like'])}
@@ -121,7 +121,7 @@ def set_user_profile(request, pk=None):
     elif pk == "heat":
         generate_dummy_data1(curr_user.uuid)
         
-    data_full = main(int(request.COOKIES.get("uuid")))
+    data_full = main(int(request.COOKIES.get("uuid")), return_descriptor=True)
     if isinstance(data_full, dict):
         # we got an actual data thing instead of a quote
         data = {'weather':data_full['descriptor'], 'temp':KtoF(data_full['feels_like'])}
