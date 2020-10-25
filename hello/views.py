@@ -109,7 +109,7 @@ def options(request):
     return render(request, "options.html")
 
 @api_view(['PUT'])
-def set_user_profile(request, pk=pk):
+def set_user_profile(request, pk=None):
     """ Populate the current user's preference history with one of two possible user profiles:
         - cold-lover
         - heat-lover
