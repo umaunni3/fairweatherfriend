@@ -12,11 +12,20 @@
 -->
     <h3>Fairweather Friend</h3>
       
-      <h4>Today will be</h4>
-      <p style="font-size: 80px"> {{ weather }}</p>
-      <h4>The temperature is</h4>
-      <p style="font-size: 65px">{{ temp }} F</p>
+      {% if is_quote %}
+        <p style="font-size: 80px"><i> {{ data.quote }} </i></p>
+      
+      
+      {% else %}
+      
+      <p style="font-size:30px">Today will be</p>
+      <p style="font-size: 80px"> {{ data.weather }}</p>
+      <p style="font-size:30px">The temperature is</p>
+      <p style="font-size: 65px"> {{ data.temp }} F</p>
+      {% endif %}
+      
     <div>
+        
         <p>How did you feel about today's weather?</p>
        <a href="https://fairweatherfriend.herokuapp.com/api/register_weather_rating/2" style="font-size: 100px">&#128513;</a>
       
