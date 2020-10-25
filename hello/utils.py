@@ -157,9 +157,8 @@ def get_user_preferences(userID):
     Takes userID, returns a pandas df of their user preferences
     """
 #     TODO: make this work properly
-    ratings = list(map(list, WeatherRating.objects.filter(uuid=userID)))
-    ratings_df = pd.DataFrame(ratings, columns=['uuid', 'dt', 'temp', 'feels_like', 'humidity', 'wind_speed', 'clouds', 'rain', 'snow', 'rating'])
-    ratings_df = ratings_df.drop(columns=['uuid'])
+    ratings = list(map(list, WeatherRating.objects.filter(uuid=userID).values_list('dt', 'temp', 'feels_like', 'humidity', 'wind_speed', 'clouds', 'rain', 'snow', 'rating')))
+    ratings_df = pd.DataFrame(ratings, columns=['dt', 'temp', 'feels_like', 'humidity', 'wind_speed', 'clouds', 'rain', 'snow', 'rating'])
     
     return ratings_df
 
