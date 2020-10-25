@@ -22,7 +22,6 @@ def index(request):
         response = render(request, "index.html", {'data':data, 'is_quote':False})
         
         curr_user = registerNewUser(response)
-        generate_dummy_data(curr_user.uuid)
         return response
     else:
         # get the current weather or a "weather sucks, here is alternate thing" response to display onscreen
@@ -36,7 +35,6 @@ def index(request):
             data = {'quote':data_full}  # data_full is actually a quote
             response = render(request, "index.html", {'data':data, 'is_quote':True})
         curr_user = getUser(request)
-        generate_dummy_data(curr_user.uuid)
         return response
     
 #    response = render(request, "index.html")
@@ -104,4 +102,22 @@ def db(request):
 #def addTemp(request):
 #    # add the current temperature to the current user's db list thing!
 #    
+
+def options(request):
+    return render(request, "options.html")
+
+@api_view(['PUT'])
+def set_user_profile(request, pk=pk):
+    """ Populate the current user's preference history with one of two possible user profiles:
+        - cold-lover
+        - heat-lover
+    """
+    
+    curr_user = getUser(request)
+    if pk == "cold":
+        generate_dummy_data2(curr_user.uuid)
+    elif pk == "heat":
+        generate_dummy_data1(curr_user.uuid)
+    
+        
     

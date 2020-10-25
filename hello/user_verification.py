@@ -3,6 +3,7 @@
 import uuid
 import requests
 from .models import User
+from .utils import generate_dummy_data1, generate_dummy_data2
 
 def registerNewUser(response):
     """
@@ -31,6 +32,10 @@ def registerNewUser(response):
     )
     
     new_user.save()
+    
+    # initialize a little bit of data for the new user
+    generate_dummy_data1(new_user.uuid)
+    
     return new_user
     
 def getUser(request):
