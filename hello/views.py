@@ -100,7 +100,8 @@ def db(request):
 #    user = User(uuid=0)
 #    user.save()
 
-    weathers = WeatherRating.objects.all()
+    curr_user = getUser(request)
+    weathers = WeatherRating.objects.filter(uuid=curr_user.uuid)
      
     return render(request, "db.html", {"greetings": weathers})
 #
