@@ -120,6 +120,17 @@ def set_user_profile(request, pk=None):
         generate_dummy_data2(curr_user.uuid)
     elif pk == "heat":
         generate_dummy_data1(curr_user.uuid)
+        
+    data_full = main(int(request.COOKIES.get("uuid")))
+    if isinstance(data_full, dict):
+        # we got an actual data thing instead of a quote
+        data = {'weather':data['descriptor'], 'temp':data['feels_like']}
+        response = render(request, "index.html", {'data':data, 'is_quote':False})
+    else:
+        # we just got a quote
+        data = {'quote':data_full}  # data_full is actually a quote
+        response = render(request, "index.html", {'data':data, 'is_quote':True})
+    return response
     
         
     
