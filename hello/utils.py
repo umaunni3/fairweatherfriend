@@ -192,16 +192,16 @@ def generate_dummy_data(uuid, num_samples=50):
         rating1 = np.random.binomial(1, .95)
         rating2 = np.random.binomial(1, .05)
         new_weather_rating = WeatherRating.objects.create(
-            "uuid": uuid,
-            "dt" : [base - datetime.timedelta(days=x) for x in range(numsamples)],
-            "temp": temp, 
-            "humidity": 50 + np.random.normal(scale = 25, size = 1),
-            "clouds": 50 + np.random.normal(scale = 25, size = 1), 
-            "wind_speed": np.random.gamma(shape = 5, size = 1),
-            "rain" : 0 if rain < 0 else rain,
-            "snow" : 0 if snow < 0 else snow,
-            "feels_like": temp + np.random.normal(scale = 2, size = 1),
-            "rating": (rating1 if rating1 == 1 else -1) if temp > 293 else (rating2 if rating2 == 1 else -1),
+            uuid: uuid,
+            dt : [base - datetime.timedelta(days=x) for x in range(numsamples)],
+            temp: temp, 
+            humidity: 50 + np.random.normal(scale = 25, size = 1),
+            clouds: 50 + np.random.normal(scale = 25, size = 1), 
+            wind_speed: np.random.gamma(shape = 5, size = 1),
+            rain : 0 if rain < 0 else rain,
+            snow : 0 if snow < 0 else snow,
+            feels_like: temp + np.random.normal(scale = 2, size = 1),
+            rating: (rating1 if rating1 == 1 else -1) if temp > 293 else (rating2 if rating2 == 1 else -1),
         )
         new_weather_rating.save()
     
