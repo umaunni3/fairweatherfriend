@@ -21,7 +21,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("db2/", hello.views.db, name="db2"),
     path("whoami/", hello.views.whoami, name="whoami"),
-    url(r'^api/register_weather_rating/(?P<pk>[0-9]+)$', hello.views.register_weather_rating),
+    url(r'api/register_weather_rating/(?P<pk>[0-9]+)', hello.views.register_weather_rating),
     path("options/", hello.views.options, name="options"),
-    url(r'^api/choose_profile/(?P<pk>[a-z]+)$', hello.views.set_user_profile),
+    url(r'options/choose_profile/(?P<pk>[a-z]+)', hello.views.set_user_profile),
 ]

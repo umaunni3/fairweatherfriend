@@ -9,7 +9,7 @@
       <script>
             function call_choose_profile(pk) {
                 $.ajax({
-                    url: 'api/choose_profile/'+pk+'/',
+                    url: '/choose_profile/'+pk+'/',
                     type: 'PUT',
                     success: function(response) {;}
                 })
