@@ -51,11 +51,12 @@ def register_weather_rating(request, pk=0):
     # get weather data for current user
     curr_user = getUser(request)
     curr_weather = get_weather(curr_user.city)
+    today = int(datetime.datetime.today().timestamp())
     
     # put this into the database, along with the user's rating
     weather_rating = WeatherRating.objects.create(
         uuid=curr_user.uuid,
-        dt=curr_weather['dt'],
+        dt=today,
         temp=curr_weather['temp'],
         feels_like=curr_weather['feels_like'],
         humidity=curr_weather['humidity'],
